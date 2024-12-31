@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplements</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/st.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">My Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sportswear.html">Sportswear</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="vitamins.html">Vitamins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="supplements.html">Supplements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="checkout.html">Checkout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-auto">
+                    <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Supplements Products -->
+    <div class="container mt-5">
+        <h2>Supplements</h2>
+        <div class="row" id="product-list">
+            <!-- المنتجات ستظهر هنا بواسطة جافا سكربت -->
+        </div>
+    </div>
+
+    <!-- Modal for Product Details -->
+    <div class="modal fade" id="productDetailsModal" tabindex="-1" aria-labelledby="productDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productDetailsModalLabel">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalProductDetails">
+                        <!-- تفاصيل المنتج ستظهر هنا -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>©️ 2024 My Store. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+
+
+<a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="quick-links">
+                <a href="index.html">Home</a>
+                <a href="sportswear.html">Sportswear</a>
+                <a href="vitamins.html">Vitamins</a>
+                <a href="supplements.html">Supplements</a>
+                <a href="cart.html">Cart</a>
+                <a href="checkout.html">Checkout</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="newsletter">
+                <p>Subscribe to our newsletter for updates and special offers</p>
+                <form action="#">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- JavaScript to add products dynamically -->
+    <script>
+        // بيانات المنتجات
+        const products = [
+            {
+                name: "Protein Supplement",
+                description: "High quality protein for muscle recovery.",
+                image: "images/orginc.jpg",
+                price: "$29.99"
+            },
+            {
+                name: "Creatine Supplement",
+                description: "Boosts strength and energy for workouts.",
+                image: "images/v2.jpg",
+                price: "$19.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/iso.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                 image: "images/proten.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/cre.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/v2.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/v3.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/ahmed.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/iso.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/b8.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/iso.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/v2.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/b8.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/creatine.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/pr.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                 image: "images/v=8.jpg",
+                price: "$24.99"
+            },
+            {
+                name: "Pre-Workout Supplement",
+                description: "Enhances your performance before workouts.",
+                image: "images/creatine.jpg",
+                price: "$24.99"
+ },
+ 
+        ];
+
+        // Cart array to store the added products
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Function to display products
+        function displayProducts() {
+            const productList = document.getElementById("product-list");
+
+            // Loop through products and display them
+            products.forEach((product, index) => {
+                const productCard = `
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <p><strong>Price: ${product.price}</strong></p>
+                                <button class="btn btn-primary" onclick="viewProductDetails(${index})">View Details</button>
+                                <button class="btn btn-success" onclick="addToCart(${index})">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productList.innerHTML += productCard; // Add product card to the page
+            });
+        }
+
+        // Function to show product details in the modal
+        function viewProductDetails(productIndex) {
+            const product = products[productIndex];
+            const modalProductDetails = document.getElementById("modalProductDetails");
+            modalProductDetails.innerHTML = `
+                <h5>${product.name}</h5>
+                <img src="${product.image}" class="img-fluid" alt="${product.name}">
+                <p>${product.description}</p>
+                <p><strong>Price: ${product.price}</strong></p>
+            `;
+            // Show the modal
+            const myModal = new bootstrap.Modal(document.getElementById('productDetailsModal'));
+            myModal.show();
+            document.getElementById("addToCartBtn").setAttribute("onclick", `addToCart(${productIndex})`);
+        }
+
+
+// Function to add product to cart
+        function addToCart(productIndex) {
+            const product = products[productIndex];
+            cart.push(product); // Add product to the cart array
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save the cart in localStorage
+            alert(`${product.name} added to cart!`); // Display confirmation
+        }
+
+        // Call the function to display products when the page loads
+        displayProducts();
+    </script>
+</body>
+</html>

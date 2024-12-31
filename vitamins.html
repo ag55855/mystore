@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitamins - My Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/st.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">My Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="sportswear.html">Sportswear</a></li>
+          <li class="nav-item"><a class="nav-link" href="vitamins.html">Vitamins</a></li>
+          <li class="nav-item"><a class="nav-link" href="supplements.html">Supplements</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <form class="d-flex ms-auto">
+          <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!-- Main Content -->
+  <div class="container my-4">
+    <h1 class="text-center mb-4">All Vitamins</h1>
+    <div class="row" id="product-list">
+      <!-- سيتم إدراج المنتجات هنا باستخدام JavaScript -->
+    </div>
+  </div>
+
+  <!-- Product Details Modal -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5 id="modal-product-name"></h5>
+          <p id="modal-product-description"></p>
+          <p><strong>Price: </strong><span id="modal-product-price"></span></p>
+          <img src="" id="modal-product-image" class="img-fluid" alt="Product Image">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="addToCartFromModal()">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>©️ 2024 My Store. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="quick-links">
+        <a href="index.html">Home</a>
+        <a href="sportswear.html">Sportswear</a>
+        <a href="vitamins.html">Vitamins</a>
+        <a href="supplements.html">Supplements</a>
+        <a href="cart.html">Cart</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="newsletter">
+
+
+<p>Subscribe to our newsletter for updates and special offers</p>
+        <form action="#">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const vitamins = [
+    {
+      id: 1,
+      name: "Vitamin C",
+      description: "Boosts immunity and overall health.",
+      price: "$10.00",
+      image: "images/166-1.jpg"
+      },
+      {
+      id: 2,
+      name: "Vitamin D",
+      description: "Supports bone health and immune function.",
+      price: "$12.00",
+      image: "images/فيتامينات-للرجال.jpeg"
+      },
+      {
+      id: 3,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/v1.png"
+      },
+      {
+      id: 4,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/v1.webp"
+      },
+      {
+      id: 5,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/v5.jpg"
+      },
+      {
+      id: 6,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/v1.webp"
+      },
+      {
+      id: 7,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/v1.webp"
+      },
+      {
+      id: 8,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/أهم_الفيتامينات_للجسم.jpg"
+      },
+      {
+      id: 9,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/v5.jpg"
+      },
+      {
+      id: 10,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/2358-3.jpg"
+      },
+      {
+      id: 14,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/أهم_الفيتامينات_للجسم.jpg"
+      },
+      {
+      id: 12,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/DermazoneNB-18.webp"
+      },
+      {
+      id: 13,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/أفضل_١٥_من_ماركات_الفيتامينات.jpg"
+      },
+      {
+      id: 14,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/أهم_الفيتامينات_للجسم.jpg"
+      },
+      {
+      id: 9,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/أفضل_١٥_من_ماركات_الفيتامينات.jpg"
+      },
+      {
+      id: 9,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/أهم_الفيتامينات_للجسم.jpg"
+      },
+      {
+      id: 9,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/فيتامينات-للرجال.jpeg"
+      },
+      {
+      id: 9,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/v5.jpg"
+      },
+      {
+      id: 10,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/09d3359647c6d1926fb0d15289925fdc.jpg"
+      },
+      {
+      id: 11,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/OIP.jpg"
+      },
+      {
+      id: 12,
+      name: "Multivitamins",
+      description: "A combination of essential vitamins for daily health.",
+      price: "$15.00",
+      image: "images/collagen-hair-benefits-1024x1024.jpg.webp"
+      },
+      
+    ];
+
+    // Display vitamins products
+    function displayVitamins() {
+      const productList = document.getElementById("product-list");
+      vitamins.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("col-md-4");
+        productCard.innerHTML = `
+          <div class="card">
+            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+            <div class="card-body">
+              <h5 class="card-title">${product.name}</h5>
+              <p class="card-text">${product.description}</p>
+              <p><strong>Price: </strong>${product.price}</p>
+              <button class="btn btn-primary" onclick="showProductDetails(${product.id})">View Details</button>
+              <button class="btn btn-success" onclick="addToCart(${product.id})">Add to Cart</button>
+            </div>
+          </div>
+        `;
+        productList.appendChild(productCard);
+      });
+    }
+
+    // Show product details in modal
+    function showProductDetails(productId) {
+      const product = vitamins.find(p => p.id === productId);
+
+      document.getElementById("modal-product-name").innerText = product.name;
+      document.getElementById("modal-product-description").innerText = product.description;
+      document.getElementById("modal-product-price").innerText = product.price;
+      document.getElementById("modal-product-image").src = product.image;
+
+      var myModal = new bootstrap.Modal(document.getElementById('productModal'));
+      myModal.show();
+    }
+
+    // Add product to cart
+    function addToCart(productId) {
+      const product = vitamins.find(p => p.id === productId);
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product.name} added to cart`);
+    }
+
+    // Add product to cart from modal
+    function addToCartFromModal() {
+      const productName = document.getElementById("modal-product-name").innerText;
+      const product = vitamins.find(p => p.name === productName);
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product.name} added to cart from modal`);
+    }
+
+    displayVitamins(); // Initialize products display when the page loads
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

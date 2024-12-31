@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/st.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">My Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="sportswear.html">Sportswear</a></li>
+          <li class="nav-item"><a class="nav-link" href="vitamins.html">Vitamins</a></li>
+          <li class="nav-item"><a class="nav-link" href="supplements.html">Supplements</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <form class="d-flex ms-auto">
+          <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Checkout Form -->
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Checkout</h2>
+    <form id="checkout-form">
+      <div class="mb-3">
+        <label for="full-name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="full-name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" required>
+      </div>
+      <div class="mb-3">
+        <label for="card-number" class="form-label">Card Number</label>
+        <input type="text" class="form-control" id="card-number" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Complete Purchase</button>
+    </form>
+  </div>
+
+  <footer>
+  <div class="container">
+    <!-- Rights Information -->
+    <p>© 2024 My Store. All rights reserved.</p>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+      <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <a href="index.html">Home</a>
+      <a href="sportswear.html">Sportswear</a>
+      <a href="vitamins.html">Vitamins</a>
+      <a href="supplements.html">Supplements</a>
+      <a href="cart.html">Cart</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="newsletter">
+      <p>Subscribe to our newsletter for updates and special offers</p>
+      <form action="#">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script>
+    // Validate checkout form
+    document.getElementById('checkout-form').addEventListener('submit', function(event) {
+      event.preventDefault();  // Prevent form submission
+
+      const name = document.getElementById('full-name').value;
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+      const cardNumber = document.getElementById('card-number').value;
+
+      if (!name || !address || !cardNumber) {
+        alert('Please fill in all the fields.');
+      } else {
+        alert('Thank you for your purchase!');
+        // You can redirect to a confirmation page or clear the cart
+        window.location.href = 'index.html';  // Redirect to home page after purchase
+      }
+    });
+  </script>
+</body>
+</html>
