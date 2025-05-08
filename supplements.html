@@ -1,277 +1,551 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplements</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/st.css">
-</head>
-<body>
-    <!-- Navbar -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supplements Shop</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        color: #2c3e50; /* لون داكن لعنوان الصفحة */
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background-color: #34495e; /* أزرق داكن */
+      }
+
+      .navbar-brand {
+        font-size: 1.8rem;
+        color: #f39c12 !important; /* لون ذهبي لتمييز اسم العلامة التجارية */
+      }
+
+      .navbar-nav .nav-link {
+        color: #ecf0f1 !important; /* لون فاتح لروابط navbar */
+        font-size: 1.1rem;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: #f39c12 !important; /* تأثير عند المرور على الروابط */
+        text-decoration: underline; /* إضافة خط تحت الرابط عند التفاعل */
+      }
+      .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+      }
+      .product-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        padding: 10px;
+        text-align: center;
+      }
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .product-card h3 {
+        margin: 10px 0 5px;
+      }
+      .product-card p {
+        color: #555;
+      }
+
+      .btn {
+        display: inline-block;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .modal-content {
+        background: white;
+        margin: 10% auto;
+        padding: 20px;
+        width: 80%;
+        max-width: 500px;
+        position: relative;
+        border-radius: 8px;
+      }
+      .close {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      footer {
+        background-color: #2c3e50; /* أزرق داكن جميل */
+        color: #fff; /* نص أبيض لسهولة القراءة */
+        padding: 30px 0; /* إضافة حشو أعلى وأسفل الفوتر */
+        text-align: center;
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #bdc3c7; /* لون رمادي فاتح للنصوص */
+      }
+
+      footer .social-icons {
+        margin: 20px 0;
+      }
+
+      footer .social-icons a {
+        margin: 0 15px;
+        color: #fff;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+      }
+
+      footer .social-icons a:hover {
+        color: #f39c12; /* تأثير عند المرور على الأيقونات */
+      }
+
+      footer .quick-links {
+        margin-top: 20px;
+      }
+
+      footer .quick-links a {
+        color: #bdc3c7;
+        font-size: 1.1rem;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      footer .quick-links a:hover {
+        color: #f39c12; /* تغيير اللون عند التفاعل */
+      }
+
+      footer .newsletter {
+        margin-top: 30px;
+      }
+
+      footer .newsletter input[type="email"] {
+        padding: 10px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+        width: 300px;
+      }
+
+      footer .newsletter button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #f39c12;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      footer .newsletter button:hover {
+        background-color: #e67e22; /* تغيير اللون عند المرور على الزر */
+      }
+
+
+      /* Responsive Design */
+
+/* Responsive Design */
+
+/* For devices with width <= 768px (tablets and smaller devices) */
+@media (max-width: 768px) {
+  /* Navbar: Stack the nav items vertically */
+  .navbar-nav {
+    text-align: center;
+  }
+
+  /* Make the navbar items larger and center them */
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin-right: 0;
+  }
+
+  /* Contact form and other sections: make form fields full-width */
+  .form-control, textarea, button[type="submit"] {
+    width: 100%;
+  }
+
+  /* Adjust social icons size */
+  .social-icons a {
+    font-size: 1.5rem;
+  }
+
+  /* Adjust container padding */
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Footer: adjust font size */
+  footer p {
+    font-size: 0.9rem;
+  }
+
+  /* Fix the size of the subscribe button */
+  .footer .btn-subscribe {
+    width: auto;
+    font-size: 1rem; /* Ensure it doesn't grow too large */
+    padding: 10px 20px; /* Adjust padding to fit */
+  }
+}
+
+/* For devices with width <= 576px (phones and smaller devices) */
+@media (max-width: 576px) {
+  /* Navbar: Adjust font size for mobile */
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  /* Adjust button size for smaller devices */
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  /* Make social icons a bit smaller */
+  .social-icons a {
+    font-size: 1.3rem;
+  }
+
+  /* Adjust footer font size */
+  footer p {
+    font-size: 0.85rem;
+  }
+
+  /* Fix the size of the subscribe button */
+  .footer .btn-subscribe {
+    width: auto;
+    font-size: 0.9rem;
+    padding: 8px 15px; /* Adjust padding */
+  }
+}
+
+    </style>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">My Store</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./index.html">My Store</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sportswear.html">Sportswear</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="vitamins.html">Vitamins</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="supplements.html">Supplements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="checkout.html">Checkout</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search products"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sportswear.html">Sportswear</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="vitamins.html">Vitamins</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="supplements.html">Supplements</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cart.html">Cart</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="checkout.html">Checkout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-                <form class="d-flex ms-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+          </form>
         </div>
+      </div>
     </nav>
 
-    <!-- Supplements Products -->
-    <div class="container mt-5">
-        <h2>Supplements</h2>
-        <div class="row" id="product-list">
-            <!-- المنتجات ستظهر هنا بواسطة جافا سكربت -->
-        </div>
-    </div>
-
-    <!-- Modal for Product Details -->
-    <div class="modal fade" id="productDetailsModal" tabindex="-1" aria-labelledby="productDetailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="productDetailsModalLabel">Product Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="modalProductDetails">
-                        <!-- تفاصيل المنتج ستظهر هنا -->
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
-                </div>
-            </div>
-        </div>
+    <!-- Modal -->
+    <div id="productList" class="product-list"></div>
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img
+          id="modalImage"
+          src=""
+          alt=""
+          style="width: 100%; border-radius: 8px"
+        />
+        <h3 id="modalName"></h3>
+        <p id="modalPrice"></p>
+        <p id="modalDescription"></p>
+        <button id="addToCartBtn" class="btn">Add to Cart</button>
+      </div>
     </div>
 
     <footer>
-        <div class="container">
-            <p>©️ 2024 My Store. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <div class="container">
+        <!-- Rights Information -->
+        <p>© 2024 My Store. All rights reserved.</p>
 
-
-<a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <div class="quick-links">
-                <a href="index.html">Home</a>
-                <a href="sportswear.html">Sportswear</a>
-                <a href="vitamins.html">Vitamins</a>
-                <a href="supplements.html">Supplements</a>
-                <a href="cart.html">Cart</a>
-                <a href="checkout.html">Checkout</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="newsletter">
-                <p>Subscribe to our newsletter for updates and special offers</p>
-                <form action="#">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="#" class="facebook" title="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="#" class="twitter" title="Twitter"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="#" class="instagram" title="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" class="linkedin" title="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
         </div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+          <a href="index.html">Home</a>
+          <a href="sportswear.html">Sportswear</a>
+          <a href="vitamins.html">Vitamins</a>
+          <a href="supplements.html">Supplements</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="newsletter">
+          <p>Subscribe to our newsletter for updates and special offers</p>
+          <form action="#">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- JavaScript to add products dynamically -->
     <script>
-        // بيانات المنتجات
-        const products = [
-            {
-                name: "Protein Supplement",
-                description: "High quality protein for muscle recovery.",
-                image: "images/orginc.jpg",
-                price: "$29.99"
-            },
-            {
-                name: "Creatine Supplement",
-                description: "Boosts strength and energy for workouts.",
-                image: "images/v2.jpg",
-                price: "$19.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/iso.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                 image: "images/proten.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/cre.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/v2.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/v3.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/ahmed.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/iso.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/b8.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/iso.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/v2.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/b8.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/creatine.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/pr.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                 image: "images/v=8.jpg",
-                price: "$24.99"
-            },
-            {
-                name: "Pre-Workout Supplement",
-                description: "Enhances your performance before workouts.",
-                image: "images/creatine.jpg",
-                price: "$24.99"
- },
- 
-        ];
+      const products = [
+        {
+          name: "Protein Supplement",
+          description: "High quality protein for muscle recovery.",
+          image: "images/orginc.jpg",
+          price: "$29.99",
+        },
+        {
+          name: "Creatine Supplement",
+          description: "Boosts strength and energy for workouts.",
+          image: "images/v2.jpg",
+          price: "$19.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/iso.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/proten.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/cre.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/v2.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/v3.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/ahmed.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/iso.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/b8.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/iso.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/v2.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/b8.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/creatine.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/pr.jpg",
+          price: "$24.99",
+        },
+        {
+          name: "Pre-Workout Supplement",
+          description: "Enhances your performance before workouts.",
+          image: "images/v=8.jpg",
+          price: "$24.99",
+        },
+    
+      ];
 
-        // Cart array to store the added products
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const productList = document.getElementById("productList");
+      const modal = document.getElementById("productModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalName = document.getElementById("modalName");
+      const modalPrice = document.getElementById("modalPrice");
+      const modalDescription = document.getElementById("modalDescription");
+      const addToCartBtn = document.getElementById("addToCartBtn");
 
-        // Function to display products
-        function displayProducts() {
-            const productList = document.getElementById("product-list");
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-            // Loop through products and display them
-            products.forEach((product, index) => {
-                const productCard = `
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
-                            <div class="card-body">
-                                <h5 class="card-title">${product.name}</h5>
-                                <p class="card-text">${product.description}</p>
-                                <p><strong>Price: ${product.price}</strong></p>
-                                <button class="btn btn-primary" onclick="viewProductDetails(${index})">View Details</button>
-                                <button class="btn btn-success" onclick="addToCart(${index})">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                productList.innerHTML += productCard; // Add product card to the page
-            });
+      function displayProducts() {
+        productList.innerHTML = "";
+        products.forEach((product, index) => {
+          const card = `
+          <div class="product-card">
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+            <button class="btn" onclick="openModal(${index})">View Details</button>
+            <button class="btn" onclick="addToCart(${index})">Add to Cart</button>
+          </div>
+        `;
+          productList.insertAdjacentHTML("beforeend", card);
+        });
+      }
+
+      function openModal(index) {
+        const product = products[index];
+        modalImage.src = product.image;
+        modalName.textContent = product.name;
+        modalPrice.textContent = product.price;
+        modalDescription.textContent = product.description;
+        modal.style.display = "block";
+
+        addToCartBtn.onclick = () => addToCart(index);
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      function addToCart(index) {
+        const product = products[index];
+        const exists = cart.some((item) => item.name === product.name);
+        if (!exists) {
+          cart.push(product);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          alert(`${product.name} added to cart!`);
+        } else {
+          alert(`${product.name} is already in the cart.`);
         }
+      }
 
-        // Function to show product details in the modal
-        function viewProductDetails(productIndex) {
-            const product = products[productIndex];
-            const modalProductDetails = document.getElementById("modalProductDetails");
-            modalProductDetails.innerHTML = `
-                <h5>${product.name}</h5>
-                <img src="${product.image}" class="img-fluid" alt="${product.name}">
-                <p>${product.description}</p>
-                <p><strong>Price: ${product.price}</strong></p>
-            `;
-            // Show the modal
-            const myModal = new bootstrap.Modal(document.getElementById('productDetailsModal'));
-            myModal.show();
-            document.getElementById("addToCartBtn").setAttribute("onclick", `addToCart(${productIndex})`);
-        }
+      window.onclick = function (event) {
+        if (event.target == modal) closeModal();
+      };
 
-
-// Function to add product to cart
-        function addToCart(productIndex) {
-            const product = products[productIndex];
-            cart.push(product); // Add product to the cart array
-            localStorage.setItem("cart", JSON.stringify(cart)); // Save the cart in localStorage
-            alert(`${product.name} added to cart!`); // Display confirmation
-        }
-
-        // Call the function to display products when the page loads
-        displayProducts();
+      displayProducts();
     </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

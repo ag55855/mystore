@@ -2,126 +2,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/st.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopping Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .cart-item-card {
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cart-item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      color: #0d6efd;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+
+    .total-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-checkout {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+    /* Footer Styles */
+footer {
+    background-color: #2c3e50; /* أزرق داكن جميل */
+    color: #fff; /* نص أبيض لسهولة القراءة */
+    padding: 30px 0; /* إضافة حشو أعلى وأسفل الفوتر */
+    text-align: center;
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #bdc3c7; /* لون رمادي فاتح للنصوص */
+  }
+  
+  footer .social-icons {
+    margin: 20px 0;
+  }
+  
+  footer .social-icons a {
+    margin: 0 15px;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  footer .social-icons a:hover {
+    color: #f39c12; /* تأثير عند المرور على الأيقونات */
+  }
+  
+  footer .quick-links {
+    margin-top: 20px;
+  }
+  
+  footer .quick-links a {
+    color: #bdc3c7;
+    font-size: 1.1rem;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  footer .quick-links a:hover {
+    color: #f39c12; /* تغيير اللون عند التفاعل */
+  }
+  
+  footer .newsletter {
+    margin-top: 30px;
+  }
+  
+  footer .newsletter input[type="email"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 300px;
+  }
+  
+  footer .newsletter button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  footer .newsletter button:hover {
+    background-color: #e67e22; /* تغيير اللون عند المرور على الزر */
+  }
+  /* Responsive Design */
+
+/* For devices with width <= 768px (tablets and smaller devices) */
+@media (max-width: 768px) {
+  /* Navbar: Stack the nav items vertically */
+  .navbar-nav {
+    text-align: center;
+  }
+
+  /* Make the navbar items larger and center them */
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin-right: 0;
+  }
+
+  /* Contact form and other sections: make form fields full-width */
+  .form-control, textarea, button[type="submit"] {
+    width: 100%;
+  }
+
+  /* Adjust social icons size */
+  .social-icons a {
+    font-size: 1.5rem;
+  }
+
+  /* Adjust container padding */
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Footer: adjust font size */
+  footer p {
+    font-size: 0.9rem;
+  }
+
+  /* Fix the size of the subscribe button */
+  .footer .btn-subscribe {
+    width: auto;
+    font-size: 1rem; /* Ensure it doesn't grow too large */
+    padding: 10px 20px; /* Adjust padding to fit */
+  }
+}
+
+/* For devices with width <= 576px (phones and smaller devices) */
+@media (max-width: 576px) {
+  /* Navbar: Adjust font size for mobile */
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  /* Adjust button size for smaller devices */
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  /* Make social icons a bit smaller */
+  .social-icons a {
+    font-size: 1.3rem;
+  }
+
+  /* Adjust footer font size */
+  footer p {
+    font-size: 0.85rem;
+  }
+
+  /* Fix the size of the subscribe button */
+  .footer .btn-subscribe {
+    width: auto;
+    font-size: 0.9rem;
+    padding: 8px 15px; /* Adjust padding */
+  }
+}
+
+
+  </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">My Store</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sportswear.html">Sportswear</a></li>
-                    <li class="nav-item"><a class="nav-link" href="vitamins.html">Vitamins</a></li>
-                    <li class="nav-item"><a class="nav-link" href="supplements.html">Supplements</a></li>
-                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
-                    <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Cart Content -->
-    <div class="container mt-5">
-        <h2>Shopping Cart</h2>
-        <div class="row" id="cart-items">
-            <!-- Cart items will appear here -->
-        </div>
-        <div class="mt-4">
-            <h3>Total: $<span id="total-price">0.00</span></h3>
-        </div>
-        <button class="btn btn-primary mt-3" onclick="checkout()">Proceed to Checkout</button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">My Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="sportswear.html">Sportswear</a></li>
+          <li class="nav-item"><a class="nav-link" href="vitamins.html">Vitamins</a></li>
+          <li class="nav-item"><a class="nav-link" href="supplements.html">Supplements</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <form class="d-flex ms-auto">
+          <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
     </div>
+  </nav>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>©️ 2024 My Store. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <div class="quick-links">
-                <a href="index.html">Home</a>
-                <a href="sportswear.html">Sportswear</a>
-                <a href="vitamins.html">Vitamins</a>
-                <a href="supplements.html">Supplements</a>
-                <a href="cart.html">Cart</a>
-                <a href="checkout.html">Checkout</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="newsletter">
-                <p>Subscribe to our newsletter for updates and special offers</p>
-                <form action="#">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">Your Cart</h2>
+    <div class="row" id="cart-container"></div>
+
+    <div class="row mt-5">
+      <div class="col-md-6 offset-md-3">
+        <div class="total-box text-center">
+          <h4>Total Price: $<span id="total-price">0.00</span></h4>
+          <button class="btn btn-success mt-3 btn-checkout" onclick="checkout()">Proceed to Checkout</button>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <!-- Rights Information -->
+      <p>© 2024 My Store. All rights reserved.</p>
+  
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+  
+      <!-- Quick Links -->
+      <div class="quick-links">
+        <a href="index.html">Home</a>
+        <a href="sportswear.html">Sportswear</a>
+        <a href="vitamins.html">Vitamins</a>
+        <a href="supplements.html">Supplements</a>
+        <a href="cart.html">Cart</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="contact.html">Contact</a>
+      </div>
+  
+      <!-- Newsletter Signup -->
+      <div class="newsletter">
+        <p>Subscribe to our newsletter for updates and special offers</p>
+        <form action="#">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function displayCart() {
+      const cartContainer = document.getElementById('cart-container');
+      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      let total = 0;
+      cartContainer.innerHTML = "";
 
-    <!-- JavaScript -->
-    <script>
-        // عرض المنتجات المخزنة في السلة من localStorage
-        function displayCart() {
-            const cartItems = JSON.parse(localStorage.getItem('cart')) || []; // قراءة السلة من localStorage
-            const cartContainer = document.getElementById('cart-items');
-            let total = 0;
-            cartContainer.innerHTML = ''; // مسح المحتويات القديمة لعرض العناصر الجديدة
+      cartItems.forEach((item, index) => {
+        const cartItem = `
+          <div class="col-md-4 mb-4">
+            <div class="card cart-item-card shadow-sm h-100">
+              <img src="${item.image}" class="card-img-top" alt="${item.name}" style="height: 220px; object-fit: cover;">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h5 class="card-title">${item.name}</h5>
+                  <p class="card-text">${item.description}</p>
+                  <p class="text-dark"><strong>Price: $${item.price}</strong></p>
+                </div>
+                <button class="btn btn-danger mt-3 w-100" onclick="removeFromCart(${index})">Remove</button>
+              </div>
+            </div>
+          </div>
+        `;
+        cartContainer.innerHTML += cartItem;
+        total += parseFloat(item.price.replace('$', ''));
+      });
 
-            // عرض كل عنصر في السلة
-            cartItems.forEach((item, index) => {
-                const cartItem = `
+      document.getElementById('total-price').innerText = total.toFixed(2);
+    }
 
-<div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="${item.image}" class="card-img-top" alt="${item.name}">
-                            <div class="card-body">
-                                <h5 class="card-title">${item.name}</h5>
-                                <p class="card-text">${item.description}</p>
-                                <p><strong>Price: $${item.price}</strong></p>
-                                <button class="btn btn-danger" onclick="removeFromCart(${index})">Remove</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                cartContainer.innerHTML += cartItem; // إضافة العنصر إلى الصفحة
-                total += parseFloat(item.price.replace('$', '')); // حساب المجموع الكلي
-            });
+    function removeFromCart(index) {
+      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItems.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      displayCart();
+    }
 
-            // تحديث المجموع الكلي في الصفحة
-            document.getElementById('total-price').innerText = total.toFixed(2);
-        }
+    function checkout() {
+      window.location.href = 'checkout.html';
+    }
 
-        // دالة لإزالة المنتج من السلة
-        function removeFromCart(index) {
-            let cartItems = JSON.parse(localStorage.getItem('cart')) || []; // قراءة السلة من localStorage
-            cartItems.splice(index, 1); // إزالة المنتج باستخدام الـ index
-            localStorage.setItem('cart', JSON.stringify(cartItems)); // تحديث السلة في localStorage
-            displayCart(); // إعادة تحميل السلة بعد التحديث
-        }
+    displayCart();
+  </script>
 
-        // استدعاء دالة عرض السلة عند تحميل الصفحة
-        displayCart();
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-        // دالة للانتقال إلى صفحة الدفع
-        function checkout() {
-            window.location.href = 'checkout.html';
-        }
-    </script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
