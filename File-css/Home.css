@@ -1,0 +1,318 @@
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333; /* نص داكن لقراءة أسهل */
+}
+
+/* استايل شريط التنقل */
+.navbar {
+    background-color: #2c3e50; /* تغيير لون الخلفية إلى أزرق داكن */
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f39c12 !important; /* تأثير اللون عند التمرير */
+}
+
+.form-control {
+    border-radius: 20px;
+}
+
+.btn-outline-success {
+    border-radius: 20px;
+    border-color: #f39c12;
+    color: #f39c12;
+}
+
+.btn-outline-success:hover {
+    background-color: #f39c12;
+    color: white;
+}
+
+/* استايل البطاقات */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-img-top {
+    border-bottom: 1px solid #eee;
+}
+
+.card-body {
+    background-color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.card-body .btn {
+    background-color: #f39c12;
+    border-radius: 25px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.card-body .btn:hover {
+    background-color: #e67e22; /* تغيير اللون عند التمرير */
+}
+
+/* استايل الفوتر */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #bdc3c7;
+}
+
+footer .social-icons {
+    margin: 20px 0;
+}
+
+footer .social-icons a {
+    margin: 0 15px;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #f39c12;
+}
+
+footer .quick-links {
+    margin-top: 20px;
+}
+
+footer .quick-links a {
+    color: #bdc3c7;
+    font-size: 1.1rem;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .quick-links a:hover {
+    color: #f39c12;
+}
+
+footer .newsletter {
+    margin-top: 30px;
+}
+
+footer .newsletter input[type="email"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 300px;
+}
+
+footer .newsletter button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer .newsletter button:hover {
+    background-color: #e67e22;
+}
+
+/* الاستايل للفوتر */
+.social-icons a {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-right: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #f39c12;
+}
+
+.quick-links a {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.quick-links a:hover {
+    color: #f39c12;
+}
+
+@media (max-width: 767px) {
+    .card {
+        margin-bottom: 2rem;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+/* تحسين الاستجابة للأجهزة المحمولة */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1.1rem;
+        margin-right: 0;
+    }
+
+    .form-control, textarea, button[type="submit"] {
+        width: 100%;
+    }
+
+    .social-icons a {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    footer {
+      background-color: #2c3e50; /* أزرق داكن جميل */
+      color: #fff; /* نص أبيض لسهولة القراءة */
+      padding: 30px 0; /* إضافة حشو أعلى وأسفل الفوتر */
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #bdc3c7; /* لون رمادي فاتح للنصوص */
+    }
+
+    footer .social-icons {
+      margin: 20px 0;
+    }
+
+    footer .social-icons a {
+      margin: 0 15px;
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-icons a:hover {
+      color: #f39c12; /* تأثير عند المرور على الأيقونات */
+    }
+
+    footer .quick-links {
+      margin-top: 20px;
+    }
+
+    footer .quick-links a {
+      color: #bdc3c7;
+      font-size: 1.1rem;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer .quick-links a:hover {
+      color: #f39c12; /* تغيير اللون عند التفاعل */
+    }
+
+    footer .newsletter {
+      margin-top: 30px;
+    }
+
+    footer .newsletter input[type="email"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      width: 300px;
+    }
+
+    footer .newsletter button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #f39c12;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer .newsletter button:hover {
+      background-color: #e67e22; /* تغيير اللون عند المرور على الزر */
+    }
+
+/* الأجهزة الصغيرة (<= 576px) */
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+
+    .social-icons a {
+        font-size: 1.3rem;
+    }
+footer p {
+        font-size: 0.85rem;
+    }
+
+    .footer .btn-subscribe {
+        width: auto;
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+}
